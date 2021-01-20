@@ -4,10 +4,9 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-const port = 8080;
+require('./controllers/authController')(app);
 
-app.listen(port, () => {
-    console.log('Você está rodando na porta 3000.')
-});;
+const port = 8000;
+app.listen(port, () => console.log(`Servidor rodando em 'http://localhost:${port}'`))
